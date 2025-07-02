@@ -71,6 +71,7 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
+    console.log("Inside login controller");
     const { email, password } = req.body;
 
     if (!email || !password)
