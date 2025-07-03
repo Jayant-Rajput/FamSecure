@@ -14,6 +14,7 @@ function transformId(obj) {
 
 router.post("/create", async (req, res) => {
   try {
+    console.log("Backend post controller called with : ", req.body);
     const { name, createdBy } = req.body;
     console.log(req.body);
 
@@ -42,7 +43,9 @@ router.post("/create", async (req, res) => {
 
 router.post("/join", async (req, res) => {
   try {
+    console.log("Backend join controller called with : ", req.body);
     const { userId, code } = req.body;
+
     if (!userId || !code)
       return res.status(400).json({ message: "All fields are required" });
 
@@ -71,6 +74,8 @@ router.post("/join", async (req, res) => {
 router.post("/groups", async (req, res) => {
   try {
     const { userId } = req.body;
+    console.log("Backend groups controller called with : ", req.body);
+
     if (!userId)
       return res.status(400).json({ message: "User ID is required" });
 
@@ -89,6 +94,7 @@ router.post("/groups", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
+    console.log("Backend grpdetail controller called with : ", req.body);
     const group = await Group.findById(req.params.id).populate(
       "members",
       "username _id lastLocation"
