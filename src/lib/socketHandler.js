@@ -25,6 +25,8 @@ export const socketHandler = (io) => {
 
 
         socket.on('locationUpdate', async({ userId, lat, lon, groupId}) => {
+            console.log("📥 Received locationUpdate:", { userId, lat, lon, groupId });
+
             try{
                 const timestamp = Date.now();
 
@@ -36,6 +38,8 @@ export const socketHandler = (io) => {
                     lon,
                     timestamp,
                 });
+
+                console.log("📌 Updated user lastLocation:", updated.lastLocation);
 
             } catch(error){
                 console.log("Error in location update ", error);

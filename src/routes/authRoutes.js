@@ -33,7 +33,7 @@ router.post("/register", async (req, res) => {
     if (username.length < 3) {
       return res
         .status(400)
-        .json({ message: "Username should be atlease 3 characters long" });
+        .json({ message: "Username should be atleast 3 characters long" });
     }
 
     const existingUser = await User.findOne({ $or: [{ email }, { username }] });
